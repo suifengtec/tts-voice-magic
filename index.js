@@ -1281,8 +1281,8 @@ const HTML_PAGE = `
                 'mode.transcription': 'Speech to Text'
             },
             zh: {
-                'page.title': 'Ms TTS - AI驱动的语音处理平台',
-                'page.description': 'Ms TTS是一个AI驱动的平台，支持文字转语音和语音转文字，拥有20+种语音选项，闪电般的处理速度，完全免费使用。',
+                'page.title': 'Edge TTS - AI驱动的语音处理平台',
+                'page.description': 'Edge TTS是一个AI驱动的平台，支持文字转语音和语音转文字，拥有20+种语音选项，闪电般的处理速度，完全免费使用。',
                 'page.keywords': '文字转语音,AI语音合成,在线TTS,语音生成器,免费语音工具,语音转文字,语音转录',
                 'lang.current': '中文',
                 'lang.en': 'English',
@@ -1293,7 +1293,7 @@ const HTML_PAGE = `
                 'lang.fr': 'Français',
                 'lang.de': 'Deutsch',
                 'lang.ru': 'Русский',
-                'header.title': 'Ms TTS',
+                'header.title': 'Edge TTS',
                 'header.subtitle': 'AI驱动的语音处理平台',
                 'header.feature1': '20+种语音选项',
                 'header.feature2': '闪电般快速',
@@ -1347,7 +1347,7 @@ const HTML_PAGE = `
                 'mode.transcription': '음성 텍스트 변환'
             },
             es: {
-                'page.title': 'Ms TTS - Plataforma de Procesamiento de Voz con IA',
+                'page.title': 'Edge TTS - Plataforma de Procesamiento de Voz con IA',
                 'page.description': 'VoiceCraft es una plataforma impulsada por IA que convierte texto a voz y voz a texto con más de 20 opciones de voz, procesamiento ultrarrápido, completamente gratis.',
                 'page.keywords': 'texto a voz,síntesis de voz IA,TTS en línea,generador de voz,herramientas de voz gratis,voz a texto,transcripción de voz',
                 'lang.current': 'Español',
