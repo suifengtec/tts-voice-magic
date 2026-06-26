@@ -873,7 +873,7 @@ const HTML_PAGE = `
                 height: 20px;
             }
             
-            /* 移动端语音转录界面样式 */
+  
             .audio-upload-zone {
                 padding: 32px 16px;
             }
@@ -912,30 +912,7 @@ const HTML_PAGE = `
                 <span>🇨🇳</span>
                 <span data-i18n="lang.zh">中文</span>
             </div>
-            <div class="language-option" data-lang="ja">
-                <span>🇯🇵</span>
-                <span data-i18n="lang.ja">日本語</span>
-            </div>
-            <div class="language-option" data-lang="ko">
-                <span>🇰🇷</span>
-                <span data-i18n="lang.ko">한국어</span>
-            </div>
-            <div class="language-option" data-lang="es">
-                <span>🇪🇸</span>
-                <span data-i18n="lang.es">Español</span>
-            </div>
-            <div class="language-option" data-lang="fr">
-                <span>🇫🇷</span>
-                <span data-i18n="lang.fr">Français</span>
-            </div>
-            <div class="language-option" data-lang="de">
-                <span>🇩🇪</span>
-                <span data-i18n="lang.de">Deutsch</span>
-            </div>
-            <div class="language-option" data-lang="ru">
-                <span>🇷🇺</span>
-                <span data-i18n="lang.ru">Русский</span>
-            </div>
+
         </div>
     </div>
 
@@ -1064,12 +1041,11 @@ const HTML_PAGE = `
                                 <option value="zh-CN-XiaoyouNeural">晓悠 (女声·悠扬)</option>
                                 <option value="zh-CN-XiaozhenNeural">晓甄 (女声·端庄)</option>
                                 <option value="zh-CN-XiaoxiaoNeural">晓晓 (女声·温柔)</option>
-                                   <option value="zh-CN-XiaoyiNeural">晓伊 (女声·甜美)</option>
+                                 <option value="zh-CN-XiaoyiNeural">晓伊 (女声·甜美)</option>
+
                                 <option value="zh-CN-YunxiNeural">云希 (男声·清朗)</option>
                                 <option value="zh-CN-YunyangNeural">云扬 (男声·阳光)</option>
-                             
                                 <option value="zh-CN-YunjianNeural">云健 (男声·稳重)</option>
-
                                 <option value="zh-CN-YunfengNeural">云枫 (男声·磁性)</option>
                                 <option value="zh-CN-YunhaoNeural">云皓 (男声·豪迈)</option>
                                 <option value="zh-CN-YunxiaNeural">云夏 (男声·热情)</option>
@@ -1352,7 +1328,13 @@ const HTML_PAGE = `
         function updateLanguageSwitcher() {
             const langFlags = {
                 'en': '🇺🇸',
-                'zh': '🇨🇳'
+                'zh': '🇨🇳',
+                'ja': '🇯🇵',
+                'ko': '🇰🇷',
+                'es': '🇪🇸',
+                'fr': '🇫🇷',
+                'de': '🇩🇪',
+                'ru': '🇷🇺'
             };
             
             const langData = translations[currentLanguage];
@@ -1598,6 +1580,11 @@ const HTML_PAGE = `
                 success.style.display = 'block';
                 
                 // 显示公众号推广组件
+                setTimeout(() => {
+                    const wechatPromotion = document.getElementById('wechatPromotion');
+                    wechatPromotion.style.display = 'block';
+                    wechatPromotion.classList.add('fade-in');
+                }, 1000);
                 
             } catch (err) {
                 loading.style.display = 'none';
@@ -1660,7 +1647,7 @@ const HTML_PAGE = `
             }
 
             // 隐藏推广组件
-     
+            wechatPromotion.style.display = 'none';
         }
 
         // 初始化音频上传功能
@@ -1830,11 +1817,7 @@ const HTML_PAGE = `
                 transcriptionSuccess.style.display = 'block';
                 
                 // 显示公众号推广组件
-                setTimeout(() => {
-                    const wechatPromotion = document.getElementById('wechatPromotion');
-                    wechatPromotion.style.display = 'block';
-                    wechatPromotion.classList.add('fade-in');
-                }, 1000);
+              
                 
             } catch (err) {
                 transcriptionLoading.style.display = 'none';
@@ -1951,6 +1934,9 @@ async function handleRequest(request) {
         return handleOptions(request);
     }
 
+
+
+
     const requestUrl = new URL(request.url);
     const path = requestUrl.pathname;
 
@@ -1999,7 +1985,7 @@ async function handleRequest(request) {
             const requestBody = await request.json();
             const {
                 input,
-                voice = "zh-CN-XiaochenNeural",
+                voice = "zh-CN-XiaoxiaoNeural",
                 speed = '1.0',
                 volume = '0',
                 pitch = '0',
@@ -2137,7 +2123,7 @@ async function processBatchedAudioChunks(chunks, voiceName, rate, pitch, volume,
     return audioChunks;
 }
 
-async function getVoice(text, voiceName = "zh-CN-XiaochenNeural", rate = '+0%', pitch = '+0Hz', volume = '+0%', style = "general", outputFormat = "audio-24khz-48kbitrate-mono-mp3") {
+async function getVoice(text, voiceName = "zh-CN-XiaoxiaoNeural", rate = '+0%', pitch = '+0Hz', volume = '+0%', style = "general", outputFormat = "audio-24khz-48kbitrate-mono-mp3") {
     try {
         // 文本预处理
         const cleanText = text.trim();
@@ -2439,7 +2425,7 @@ async function handleFileUpload(request) {
     try {
         const formData = await request.formData();
         const file = formData.get('file');
-        const voice = formData.get('voice') || 'zh-CN-XiaochenNeural';
+        const voice = formData.get('voice') || 'zh-CN-XiaoxiaoNeural';
         const speed = formData.get('speed') || '1.0';
         const volume = formData.get('volume') || '0';
         const pitch = formData.get('pitch') || '0';
