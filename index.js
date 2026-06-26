@@ -1528,8 +1528,8 @@ const HTML_PAGE = `
                         loadingText.textContent = '正在生成语音，请稍候...';
                         progressInfo.textContent = '文本长度: ' + textLength + ' 字符';
                     }
-                    
-                    response = await fetch('/v1/audio/speech', {
+                    // response = await fetch('/v1/audio/speech', {
+                    response = await fetch('https://tts.wangwangit.com/v1/audio/speech', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
