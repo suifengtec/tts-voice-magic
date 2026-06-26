@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.title">EdgeTTS - AI-Powered Voice Processing Platform</title>
+    <meta name="description" content="" data-i18n-content="page.description">
+    <meta name="keywords" content="" data-i18n-content="page.keywords">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="EdgeTTS - AI Voice Processing Platform">
+    <meta property="og:description" content="Free AI-powered text-to-speech and speech-to-text platform with 90+ voice options in 8 languages.">
+    <meta property="og:type" content="website">
+
+
+    <!-- Twitter Card -->
+
+
+    <!-- Favicon -->
+
+    <link rel="stylesheet" href="/css/style.css">
+
+   
+</head>
+<body>
+    <!-- 顶部工具栏 -->
+    <div class="top-toolbar">
+        <!-- 主题切换按钮 -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <svg class="icon-moon" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <svg class="icon-sun" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+        </button>
+
+        <!-- 微信公众号二维码 -->
+        <div class="wechat-qrcode" style="display: none;">
+            <button class="wechat-btn" id="wechatBtn" aria-label="Follow WeChat">
+                <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .139.045c.133 0 .241-.108.241-.243 0-.06-.023-.118-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088l-.405-.035zm-2.503 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.908 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+                </svg>
+            </button>
+            <div class="qrcode-popup" id="qrcodePopup">
+                <!-- <div class="qrcode-content">
+                    <img src="/images/qrcode.png" alt="WeChat QR Code">
+                    <p data-i18n="wechat.scanCode">Scan to follow</p>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- 顶栏赞赏入口（仅中文用户显示） -->
+        <div class="tip-trigger" id="tipTrigger" style="display: none;">
+            <!-- <button class="tip-btn" id="tipBtn" type="button" aria-label="赞赏作者" data-umami-event="click-top-tip">
+                <span class="tip-btn-emoji" aria-hidden="true">☕</span>
+                <span class="tip-btn-text" data-i18n="tip.topLink">请作者喝杯咖啡</span>
+            </button>
+            <div class="tip-popup" id="tipPopup">
+                <div class="tip-popup-content">
+                    <img src="/images/pay.png" alt="赞赏码" loading="lazy">
+                    <p data-i18n="tip.scanCaption">微信扫码赞赏</p>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- 语言切换器 -->
+        <div class="language-switcher">
+            <div class="language-btn" id="languageBtn">
+                <span id="currentLangFlag">🌐</span>
+                <span id="currentLangName" data-i18n="lang.current">English</span>
+                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </div>
+            <div class="language-dropdown" id="languageDropdown">
+                <div class="language-option" data-lang="en">
+                    <span>🇺🇸</span>
+                    <span data-i18n="lang.en">English</span>
+                </div>
+                <div class="language-option" data-lang="zh">
+                    <span>🇨🇳</span>
+                    <span data-i18n="lang.zh">中文</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 data-i18n="header.title">EdgeTTS</h1>
+            <p class="subtitle" data-i18n="header.subtitle">AI-Powered Voice Processing Platform</p>
+            <div class="features">
+                <div class="feature-item">
+                    <span class="feature-icon">✨</span>
+                    <span data-i18n="header.feature1">90+ Voice Options</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <span data-i18n="header.feature2">Lightning Fast</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🆓</span>
+                    <span data-i18n="header.feature3">Completely Free</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📱</span>
+                    <span data-i18n="header.feature4">Download Support</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主功能切换器 -->
+        <div class="mode-switcher">
+            <button type="button" class="mode-btn active" id="ttsMode">
+                <span class="mode-icon">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+                    </svg>
+                </span>
+                <span data-i18n="mode.tts">Text to Speech</span>
+            </button>
+            <button type="button" class="mode-btn" id="transcriptionMode">
+                <span class="mode-icon">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 9m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/>
+                        <path d="M9 17v4"/>
+                        <path d="M12 13a3 3 0 0 0 3 -3"/>
+                        <path d="M15 9.5v-3a3 3 0 0 0 -3 -3h-1"/>
+                        <path d="M19 8v8"/>
+                        <path d="M17 9v6"/>
+                        <path d="M21 9v6"/>
+                    </svg>
+                </span>
+                <span data-i18n="mode.transcription">Speech to Text</span>
+            </button>
+        </div>
+
+        <div class="main-content">
+            <div class="form-container">
+                <form id="ttsForm">
+                    <!-- 输入方式选择 -->
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="input.label">Select Input Method</label>
+                        <div class="input-method-tabs">
+                            <button type="button" class="tab-btn active" id="textInputTab">
+                                <span class="tab-icon">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                                    </svg>
+                                </span>
+                                <span data-i18n="input.manual">Manual Input</span>
+                            </button>
+                            <button type="button" class="tab-btn" id="fileUploadTab">
+                                <span class="tab-icon">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                                    </svg>
+                                </span>
+                                <span data-i18n="input.upload">Upload File</span>
+                            </button>
+                            <button type="button" class="tab-btn" id="ssmlInputTab">
+                                <span class="tab-icon">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M14.6 16.6 19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/>
+                                    </svg>
+                                </span>
+                                <span data-i18n="input.ssml">SSML</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 手动输入区域 -->
+                    <div class="form-group" id="textInputArea">
+                        <div class="form-label-row">
+                            <label class="form-label" for="text" data-i18n="text.label">Input Text</label>
+                            <button type="button" class="pause-help-btn" id="pauseHelpBtn" aria-label="Speech directives help" data-i18n-title="marker.helpButton" title="Speech directives help">
+                                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v4z"/>
+                                </svg>
+                                <span data-i18n="marker.helpButton">Directives</span>
+                            </button>
+                        </div>
+                        <textarea class="form-textarea" id="text" data-i18n-placeholder="text.placeholder" placeholder="Enter text to convert to speech, supports multiple languages..." required></textarea>
+                    </div>
+
+                    <!-- 文件上传区域 -->
+                    <div class="form-group" id="fileUploadArea" style="display: none;">
+                        <label class="form-label" for="fileInput" data-i18n="file.label">Upload txt file</label>
+                        <div class="file-upload-container">
+                            <div class="file-drop-zone" id="fileDropZone">
+                                <div class="file-drop-content">
+                                    <div class="file-drop-icon">
+                                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2L13.09 8.26L19 7L17.74 13.09L24 12L17.74 10.91L19 5L13.09 6.26L12 0L10.91 6.26L5 5L6.26 10.91L0 12L6.26 13.09L5 19L10.91 17.74L12 24L13.09 17.74L19 19L17.74 13.09L24 12Z"/>
+                                            <path d="M14 2H6A2 2 0 0 0 4 4V20A2 2 0 0 0 6 22H18A2 2 0 0 0 20 20V8L14 2M18 20H6V4H13V9H18V20Z"/>
+                                        </svg>
+                                    </div>
+                                    <p class="file-drop-text" data-i18n="file.dropText">Drag txt file here or click to select</p>
+                                    <p class="file-drop-hint" data-i18n="file.dropHint">Supports txt format, max 500KB</p>
+                                </div>
+                                <input type="file" id="fileInput" accept=".txt,text/plain" style="display: none;">
+                            </div>
+                            <div class="file-info" id="fileInfo" style="display: none;">
+                                <div class="file-details">
+                                    <span class="file-name" id="fileName"></span>
+                                    <span class="file-size" id="fileSize"></span>
+                                </div>
+                                <button type="button" class="file-remove-btn" id="fileRemoveBtn">✕</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SSML 直通输入区域 -->
+                    <div class="form-group" id="ssmlInputArea" style="display: none;">
+                        <div class="form-label-row">
+                            <label class="form-label" for="ssmlText" data-i18n="ssml.label">SSML Markup</label>
+                            <button type="button" class="pause-help-btn" id="ssmlExampleBtn" data-i18n-title="ssml.exampleTitle" title="Insert an SSML example">
+                                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
+                                </svg>
+                                <span data-i18n="ssml.exampleBtn">Example</span>
+                            </button>
+                        </div>
+                        <textarea class="form-textarea" id="ssmlText"
+                                  data-i18n-placeholder="ssml.placeholder"
+                                  placeholder='<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">&#10;  <voice name="zh-CN-XiaoxiaoNeural">大家好<break time="500ms"/>欢迎使用 SSML</voice>&#10;</speak>'
+                                  spellcheck="false"
+                                  style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; min-height: 180px;"></textarea>
+                        <p class="file-drop-hint" data-i18n="ssml.hint" style="margin-top: 6px;">SSML mode passes raw markup directly to Microsoft TTS. Voice/speed/pitch/style controls below are ignored. Max 8KB.</p>
+                    </div>
+
+                    <div class="controls-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="voice" data-i18n="voice.label">Voice Selection</label>
+                            <select class="form-select" id="voice">
+                                <!-- 中文语音 Chinese -->
+                                <optgroup label="Chinese" data-i18n-label="voice.group.chinese">
+                                    <option value="zh-CN-XiaoxiaoNeural">晓晓 Xiaoxiao (女声·温柔)</option>
+                                    <option value="zh-CN-YunxiNeural">云希 Yunxi (男声·清朗)</option>
+                                    <option value="zh-CN-YunyangNeural">云扬 Yunyang (男声·阳光)</option>
+                                    <option value="zh-CN-XiaoyiNeural">晓伊 Xiaoyi (女声·甜美)</option>
+                                    <option value="zh-CN-YunjianNeural">云健 Yunjian (男声·稳重)</option>
+                                    <option value="zh-CN-XiaochenNeural">晓辰 Xiaochen (女声·知性)</option>
+                                    <option value="zh-CN-XiaohanNeural">晓涵 Xiaohan (女声·优雅)</option>
+                                    <option value="zh-CN-XiaomengNeural">晓梦 Xiaomeng (女声·梦幻)</option>
+                                    <option value="zh-CN-XiaomoNeural">晓墨 Xiaomo (女声·文艺)</option>
+                                    <option value="zh-CN-XiaoqiuNeural">晓秋 Xiaoqiu (女声·成熟)</option>
+                                    <option value="zh-CN-XiaoruiNeural">晓睿 Xiaorui (女声·智慧)</option>
+                                    <option value="zh-CN-XiaoshuangNeural">晓双 Xiaoshuang (女声·活泼)</option>
+                                    <option value="zh-CN-XiaoxuanNeural">晓萱 Xiaoxuan (女声·清新)</option>
+                                    <option value="zh-CN-XiaoyanNeural">晓颜 Xiaoyan (女声·柔美)</option>
+                                    <option value="zh-CN-XiaoyouNeural">晓悠 Xiaoyou (女声·悠扬)</option>
+                                    <option value="zh-CN-XiaozhenNeural">晓甄 Xiaozhen (女声·端庄)</option>
+                                    <option value="zh-CN-YunfengNeural">云枫 Yunfeng (男声·磁性)</option>
+                                    <option value="zh-CN-YunhaoNeural">云皓 Yunhao (男声·豪迈)</option>
+                                    <option value="zh-CN-YunxiaNeural">云夏 Yunxia (男声·热情)</option>
+                                    <option value="zh-CN-YunyeNeural">云野 Yunye (男声·野性)</option>
+                                    <option value="zh-CN-YunzeNeural">云泽 Yunze (男声·深沉)</option>
+                                </optgroup>
+                                <!-- 英语语音 English -->
+                                <optgroup label="English" data-i18n-label="voice.group.english">
+                                    <option value="en-US-JennyNeural">Jenny (Female, US)</option>
+                                    <option value="en-US-GuyNeural">Guy (Male, US)</option>
+                                    <option value="en-US-AriaNeural">Aria (Female, US)</option>
+                                    <option value="en-US-DavisNeural">Davis (Male, US)</option>
+                                    <option value="en-US-AmberNeural">Amber (Female, US)</option>
+                                    <option value="en-US-AnaNeural">Ana (Female, Child, US)</option>
+                                    <option value="en-US-AndrewNeural">Andrew (Male, US)</option>
+                                    <option value="en-US-AshleyNeural">Ashley (Female, US)</option>
+                                    <option value="en-US-BrandonNeural">Brandon (Male, US)</option>
+                                    <option value="en-US-ChristopherNeural">Christopher (Male, US)</option>
+                                    <option value="en-US-CoraNeural">Cora (Female, US)</option>
+                                    <option value="en-US-ElizabethNeural">Elizabeth (Female, US)</option>
+                                    <option value="en-US-EricNeural">Eric (Male, US)</option>
+                                    <option value="en-US-JacobNeural">Jacob (Male, US)</option>
+                                    <option value="en-US-JaneNeural">Jane (Female, US)</option>
+                                    <option value="en-US-JasonNeural">Jason (Male, US)</option>
+                                    <option value="en-US-MichelleNeural">Michelle (Female, US)</option>
+                                    <option value="en-US-MonicaNeural">Monica (Female, US)</option>
+                                    <option value="en-US-NancyNeural">Nancy (Female, US)</option>
+                                    <option value="en-US-RogerNeural">Roger (Male, US)</option>
+                                    <option value="en-US-SaraNeural">Sara (Female, US)</option>
+                                    <option value="en-US-SteffanNeural">Steffan (Male, US)</option>
+                                    <option value="en-US-TonyNeural">Tony (Male, US)</option>
+                                    <option value="en-GB-SoniaNeural">Sonia (Female, UK)</option>
+                                    <option value="en-GB-RyanNeural">Ryan (Male, UK)</option>
+                                    <option value="en-GB-LibbyNeural">Libby (Female, UK)</option>
+                                    <option value="en-GB-MaisieNeural">Maisie (Female, Child, UK)</option>
+                                    <option value="en-AU-NatashaNeural">Natasha (Female, AU)</option>
+                                    <option value="en-AU-WilliamNeural">William (Male, AU)</option>
+                                </optgroup>
+                                <!-- 日语语音 Japanese -->
+                                <optgroup label="Japanese" data-i18n-label="voice.group.japanese">
+                                    <option value="ja-JP-NanamiNeural">Nanami 七海 (女性)</option>
+                                    <option value="ja-JP-KeitaNeural">Keita 圭太 (男性)</option>
+                                    <option value="ja-JP-AoiNeural">Aoi 葵 (女性)</option>
+                                    <option value="ja-JP-DaichiNeural">Daichi 大地 (男性)</option>
+                                    <option value="ja-JP-MayuNeural">Mayu 真由 (女性)</option>
+                                    <option value="ja-JP-NaokiNeural">Naoki 直樹 (男性)</option>
+                                    <option value="ja-JP-ShioriNeural">Shiori 栞 (女性)</option>
+                                </optgroup>
+                                <!-- 韩语语音 Korean -->
+                                <optgroup label="Korean" data-i18n-label="voice.group.korean">
+                                    <option value="ko-KR-SunHiNeural">SunHi 선희 (여성)</option>
+                                    <option value="ko-KR-InJoonNeural">InJoon 인준 (남성)</option>
+                                    <option value="ko-KR-BongJinNeural">BongJin 봉진 (남성)</option>
+                                    <option value="ko-KR-GookMinNeural">GookMin 국민 (남성)</option>
+                                    <option value="ko-KR-JiMinNeural">JiMin 지민 (여성)</option>
+                                    <option value="ko-KR-SeoHyeonNeural">SeoHyeon 서현 (여성)</option>
+                                    <option value="ko-KR-SoonBokNeural">SoonBok 순복 (여성)</option>
+                                    <option value="ko-KR-YuJinNeural">YuJin 유진 (여성)</option>
+                                </optgroup>
+                                <!-- 法语语音 French -->
+                                <optgroup label="French" data-i18n-label="voice.group.french">
+                                    <option value="fr-FR-DeniseNeural">Denise (Femme)</option>
+                                    <option value="fr-FR-HenriNeural">Henri (Homme)</option>
+                                    <option value="fr-FR-EloiseNeural">Eloise (Femme)</option>
+                                    <option value="fr-FR-AlainNeural">Alain (Homme)</option>
+                                    <option value="fr-FR-BrigitteNeural">Brigitte (Femme)</option>
+                                    <option value="fr-FR-CelesteNeural">Celeste (Femme)</option>
+                                    <option value="fr-FR-ClaudeNeural">Claude (Homme)</option>
+                                    <option value="fr-FR-CoraliNeural">Corali (Femme)</option>
+                                    <option value="fr-FR-JacquelineNeural">Jacqueline (Femme)</option>
+                                    <option value="fr-FR-JeromeNeural">Jerome (Homme)</option>
+                                    <option value="fr-FR-JosephineNeural">Josephine (Femme)</option>
+                                    <option value="fr-FR-MauriceNeural">Maurice (Homme)</option>
+                                    <option value="fr-FR-YvesNeural">Yves (Homme)</option>
+                                    <option value="fr-FR-YvetteNeural">Yvette (Femme)</option>
+                                </optgroup>
+                                <!-- 德语语音 German -->
+                                <optgroup label="German" data-i18n-label="voice.group.german">
+                                    <option value="de-DE-KatjaNeural">Katja (Frau)</option>
+                                    <option value="de-DE-ConradNeural">Conrad (Mann)</option>
+                                    <option value="de-DE-AmalaNeural">Amala (Frau)</option>
+                                    <option value="de-DE-BerndNeural">Bernd (Mann)</option>
+                                    <option value="de-DE-ChristophNeural">Christoph (Mann)</option>
+                                    <option value="de-DE-ElkeNeural">Elke (Frau)</option>
+                                    <option value="de-DE-GiselaNeural">Gisela (Frau)</option>
+                                    <option value="de-DE-KasperNeural">Kasper (Mann)</option>
+                                    <option value="de-DE-KillianNeural">Killian (Mann)</option>
+                                    <option value="de-DE-KlarissaNeural">Klarissa (Frau)</option>
+                                    <option value="de-DE-KlausNeural">Klaus (Mann)</option>
+                                    <option value="de-DE-LouisaNeural">Louisa (Frau)</option>
+                                    <option value="de-DE-MajaNeural">Maja (Frau)</option>
+                                    <option value="de-DE-RalfNeural">Ralf (Mann)</option>
+                                    <option value="de-DE-TanjaNeural">Tanja (Frau)</option>
+                                </optgroup>
+                                <!-- 西班牙语语音 Spanish -->
+                                <optgroup label="Spanish" data-i18n-label="voice.group.spanish">
+                                    <option value="es-ES-ElviraNeural">Elvira (Mujer)</option>
+                                    <option value="es-ES-AlvaroNeural">Alvaro (Hombre)</option>
+                                    <option value="es-ES-AbrilNeural">Abril (Mujer)</option>
+                                    <option value="es-ES-ArnauNeural">Arnau (Hombre)</option>
+                                    <option value="es-ES-DarioNeural">Dario (Hombre)</option>
+                                    <option value="es-ES-EliasNeural">Elias (Hombre)</option>
+                                    <option value="es-ES-EstrellaNeural">Estrella (Mujer)</option>
+                                    <option value="es-ES-IreneNeural">Irene (Mujer)</option>
+                                    <option value="es-ES-LaiaNeural">Laia (Mujer)</option>
+                                    <option value="es-ES-LiaNeural">Lia (Mujer)</option>
+                                    <option value="es-ES-NilNeural">Nil (Hombre)</option>
+                                    <option value="es-ES-SaulNeural">Saul (Hombre)</option>
+                                    <option value="es-ES-TeoNeural">Teo (Hombre)</option>
+                                    <option value="es-ES-TrianaNeural">Triana (Mujer)</option>
+                                    <option value="es-ES-VeraNeural">Vera (Mujer)</option>
+                                    <option value="es-MX-DaliaNeural">Dalia (Mujer, MX)</option>
+                                    <option value="es-MX-JorgeNeural">Jorge (Hombre, MX)</option>
+                                </optgroup>
+                                <!-- 俄语语音 Russian -->
+                                <optgroup label="Russian" data-i18n-label="voice.group.russian">
+                                    <option value="ru-RU-SvetlanaNeural">Svetlana Светлана (Женский)</option>
+                                    <option value="ru-RU-DmitryNeural">Dmitry Дмитрий (Мужской)</option>
+                                    <option value="ru-RU-DariyaNeural">Dariya Дарья (Женский)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="speed">
+                                <span data-i18n="speed.label">Speed Adjustment</span>
+                                <span class="control-value" id="speedValue">1.00x</span>
+                            </label>
+                            <div class="range-control">
+                                <div class="range-presets">
+                                    <button type="button" class="preset-btn" data-target="speed" data-value="0.5" data-i18n-title="speed.verySlow" title="Very Slow">🐌</button>
+                                    <button type="button" class="preset-btn" data-target="speed" data-value="0.75" data-i18n-title="speed.slow" title="Slow">🚶</button>
+                                    <button type="button" class="preset-btn active" data-target="speed" data-value="1.0" data-i18n-title="speed.normal" title="Normal">⚡</button>
+                                    <button type="button" class="preset-btn" data-target="speed" data-value="1.5" data-i18n-title="speed.fast" title="Fast">🚀</button>
+                                    <button type="button" class="preset-btn" data-target="speed" data-value="2.0" data-i18n-title="speed.veryFast" title="Very Fast">💨</button>
+                                </div>
+                                <input type="range" class="form-range" id="speed"
+                                       min="0.25" max="3.0" step="0.05" value="1.0">
+                                <div class="range-labels">
+                                    <span>0.25x</span>
+                                    <span>1.0x</span>
+                                    <span>3.0x</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="pitch">
+                                <span data-i18n="pitch.label">Pitch Adjustment</span>
+                                <span class="control-value" id="pitchValue">0Hz</span>
+                            </label>
+                            <div class="range-control">
+                                <div class="range-presets">
+                                    <button type="button" class="preset-btn" data-target="pitch" data-value="-50" data-i18n-title="pitch.veryLow" title="Very Low">📉</button>
+                                    <button type="button" class="preset-btn" data-target="pitch" data-value="-25" data-i18n-title="pitch.low" title="Low">📊</button>
+                                    <button type="button" class="preset-btn active" data-target="pitch" data-value="0" data-i18n-title="pitch.normal" title="Normal">🎵</button>
+                                    <button type="button" class="preset-btn" data-target="pitch" data-value="25" data-i18n-title="pitch.high" title="High">📈</button>
+                                    <button type="button" class="preset-btn" data-target="pitch" data-value="50" data-i18n-title="pitch.veryHigh" title="Very High">🎶</button>
+                                </div>
+                                <input type="range" class="form-range" id="pitch"
+                                       min="-50" max="50" step="1" value="0">
+                                <div class="range-labels">
+                                    <span>-50Hz</span>
+                                    <span>0Hz</span>
+                                    <span>+50Hz</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="style" data-i18n="style.label">Voice Style</label>
+                            <select class="form-select" id="style">
+                                <option value="general" selected data-i18n="style.general">🎭 General</option>
+                                <option value="assistant" data-i18n="style.assistant">🤖 Assistant</option>
+                                <option value="chat" data-i18n="style.chat">💬 Chat</option>
+                                <option value="customerservice" data-i18n="style.customerservice">📞 Customer Service</option>
+                                <option value="newscast" data-i18n="style.newscast">📺 Newscast</option>
+                                <option value="affectionate" data-i18n="style.affectionate">💕 Affectionate</option>
+                                <option value="calm" data-i18n="style.calm">😌 Calm</option>
+                                <option value="cheerful" data-i18n="style.cheerful">😊 Cheerful</option>
+                                <option value="gentle" data-i18n="style.gentle">🌸 Gentle</option>
+                                <option value="lyrical" data-i18n="style.lyrical">🎼 Lyrical</option>
+                                <option value="serious" data-i18n="style.serious">🎯 Serious</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="generateBtn">
+                        <span>🎙️</span>
+                        <span data-i18n="btn.generate">Generate Voice</span>
+                    </button>
+            </form>
+
+                <div id="result" class="result-container">
+                    <div id="loading" class="loading-container" style="display: none;">
+                        <div class="loading-spinner"></div>
+                        <p class="loading-text" id="loadingText" data-i18n="loading.generating">Generating voice, please wait...</p>
+                        <div class="progress-info" id="progressInfo" style="margin-top: 12px; font-size: 0.875rem; color: var(--text-secondary);"></div>
+                    </div>
+
+                    <div id="success" style="display: none;">
+                        <audio id="audioPlayer" class="audio-player" controls></audio>
+                        <a id="downloadBtn" class="btn-secondary" download="speech.mp3">
+                            <span>📥</span>
+                            <span data-i18n="btn.download">Download Audio</span>
+                        </a>
+                    </div>
+
+                    <div id="error" class="error-message" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 语音转录界面 -->
+        <div class="transcription-container" id="transcriptionContainer" style="display: none;">
+            <div class="form-container">
+                <form id="transcriptionForm">
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="file.audioLabel">Upload Audio File</label>
+                        <div class="audio-upload-zone" id="audioDropZone">
+                            <div class="file-drop-content">
+                                <div class="file-drop-icon">
+                                    <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                                        <path d="M14 2v6h6"/>
+                                        <path d="M12 18v-6"/>
+                                        <path d="M9 15l3-3 3 3"/>
+                                    </svg>
+                                </div>
+                                <p class="file-drop-text" data-i18n="file.audioDropText">Drag audio file here or click to select</p>
+                                <p class="file-drop-hint" data-i18n="file.audioDropHint">Supports mp3, wav, m4a, flac, aac, ogg, webm, amr, 3gp, max 10MB</p>
+                            </div>
+                            <input type="file" id="audioFileInput" accept=".mp3,.wav,.m4a,.flac,.aac,.ogg,.webm,.amr,.3gp,audio/*" style="display: none;">
+                        </div>
+                        <div class="file-info" id="audioFileInfo" style="display: none;">
+                            <div class="file-details">
+                                <span class="file-name" id="audioFileName"></span>
+                                <span class="file-size" id="audioFileSize"></span>
+                            </div>
+                            <button type="button" class="file-remove-btn" id="audioFileRemoveBtn">✕</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="tokenInput" data-i18n="token.label">API Token Configuration</label>
+                        <div class="token-config">
+                            <div class="token-option">
+                                <label class="token-label">
+                                    <input type="radio" name="tokenOption" value="default" checked>
+                                    <span data-i18n="token.default">Use Default Token</span>
+                                </label>
+                            </div>
+                            <div class="token-option">
+                                <label class="token-label">
+                                    <input type="radio" name="tokenOption" value="custom">
+                                    <span data-i18n="token.custom">Use Custom Token (SiliconFlow)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <input type="password" class="form-input" id="tokenInput"
+                               data-i18n-placeholder="token.placeholder" placeholder="Enter your API token (optional)" style="display: none;">
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="transcribeBtn">
+                        <span>🎧</span>
+                        <span data-i18n="btn.transcribe">Start Transcription</span>
+                    </button>
+                </form>
+
+                <div id="transcriptionResult" class="result-container">
+                    <div id="transcriptionLoading" class="loading-container" style="display: none;">
+                        <div class="loading-spinner"></div>
+                        <p class="loading-text" id="transcriptionLoadingText" data-i18n="loading.transcribing">Transcribing audio, please wait...</p>
+                        <div class="progress-info" id="transcriptionProgressInfo" style="margin-top: 12px; font-size: 0.875rem; color: var(--text-secondary);"></div>
+                    </div>
+
+                    <div id="transcriptionSuccess" style="display: none;">
+                        <div class="transcription-result">
+                            <label class="form-label" data-i18n="result.label">Transcription Result</label>
+                            <textarea class="form-textarea" id="transcriptionText"
+                                      data-i18n-placeholder="result.placeholder" placeholder="Transcription result will appear here..." readonly></textarea>
+                            <div class="result-actions">
+                                <button type="button" class="btn-secondary" id="copyTranscriptionBtn">
+                                    <span>📋</span>
+                                    <span data-i18n="btn.copy">Copy Text</span>
+                                </button>
+                                <button type="button" class="btn-secondary" id="editTranscriptionBtn">
+                                    <span>✏️</span>
+                                    <span data-i18n="btn.edit">Edit Text</span>
+                                </button>
+                                <button type="button" class="btn-secondary" id="useForTtsBtn">
+                                    <span>🎙️</span>
+                                    <span data-i18n="btn.useForTts">Convert to Speech</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="transcriptionError" class="error-message" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 公众号推广组件 -->
+
+
+    <!-- 语音指令帮助弹窗：首访自动弹一次 + 顶部 ⓘ 按钮可随时唤起 -->
+    <div class="pause-modal" id="pauseModal" role="dialog" aria-modal="true" aria-labelledby="pauseModalTitle" style="display: none;">
+        <div class="pause-modal__backdrop" id="pauseModalBackdrop"></div>
+        <div class="pause-modal__panel">
+            <button type="button" class="pause-modal__close" id="pauseModalClose" aria-label="Close">×</button>
+
+            <div class="pause-modal__header">
+                <span class="pause-modal__icon">🎙️</span>
+                <h2 class="pause-modal__title" id="pauseModalTitle" data-i18n="marker.modalTitle">在文本中插入语音指令</h2>
+            </div>
+
+            <p class="pause-modal__intro" data-i18n="marker.modalIntro">在文本中插入下面这些标记，可以精确控制停顿、重音、语速、音调、情感、朗读方式等。语法整体风格：<code>[名字:值]内容[/名字]</code>，pause 是自闭合的。</p>
+
+            <div class="marker-help-section">
+                <h3 class="marker-help-section__title" data-i18n="marker.section.pause">⏸ 停顿（自闭合）</h3>
+                <ul class="pause-modal__examples">
+                    <li><code>[pause:500ms]</code> — <span data-i18n="marker.pause.ms">精确毫秒（最大 5000ms）</span></li>
+                    <li><code>[pause:1.5s]</code> — <span data-i18n="marker.pause.sec">秒，支持小数</span></li>
+                    <li><code>[pause:weak]</code> / <code>[pause:medium]</code> / <code>[pause:strong]</code> — <span data-i18n="marker.pause.strength">按强度（x-weak ~ x-strong）</span></li>
+                    <li><code>[pause]</code> — <span data-i18n="marker.pause.default">默认中等停顿</span></li>
+                </ul>
+            </div>
+
+            <div class="marker-help-section">
+                <h3 class="marker-help-section__title" data-i18n="marker.section.emphasis">💪 重音 emphasis</h3>
+                <ul class="pause-modal__examples">
+                    <li><code>[emphasis:strong]非常重要[/emphasis]</code> — <span data-i18n="marker.emphasis.levels">level: reduced / moderate / strong / x-strong</span></li>
+                </ul>
+            </div>
+
+            <div class="marker-help-section">
+                <h3 class="marker-help-section__title" data-i18n="marker.section.prosody">🎚 语速 / 音调 / 音量</h3>
+                <ul class="pause-modal__examples">
+                    <li><code>[rate:slow]慢一些[/rate]</code> — <span data-i18n="marker.rate">x-slow / slow / medium / fast / x-fast 或 ±N% (如 +50%)</span></li>
+                    <li><code>[pitch:+10%]高一些[/pitch]</code> — <span data-i18n="marker.pitch">high / low 或 ±NHz / ±N% / ±Nst（半音）</span></li>
+                    <li><code>[volume:loud]大声[/volume]</code> — <span data-i18n="marker.volume">silent / soft / loud / x-loud 或 ±NdB</span></li>
+                </ul>
+            </div>
+
+            <div class="marker-help-section">
+                <h3 class="marker-help-section__title" data-i18n="marker.section.style">🎭 情感风格 style（仅部分中文 voice 支持）</h3>
+                <ul class="pause-modal__examples">
+                    <li><code>[style:cheerful]开心地说[/style]</code> — <span data-i18n="marker.style.basic">cheerful / sad / angry / calm / serious / chat / customerservice ...</span></li>
+                    <li><code>[style:cheerful:1.5]很开心[/style]</code> — <span data-i18n="marker.style.degree">可选强度 0.01 ~ 2.0</span></li>
+                </ul>
+            </div>
+
+            <div class="marker-help-section">
+                <h3 class="marker-help-section__title" data-i18n="marker.section.sayas">🔢 朗读方式 say-as</h3>
+                <ul class="pause-modal__examples">
+                    <li><code>[say-as:digits]12345[/say-as]</code> — <span data-i18n="marker.sayas.digits">逐字读数字</span></li>
+                    <li><code>[say-as:telephone]13800138000[/say-as]</code> — <span data-i18n="marker.sayas.tel">电话号码</span></li>
+                    <li><code>[say-as:date]2026-05-24[/say-as]</code> — <span data-i18n="marker.sayas.date">日期</span></li>
+                    <li><code>[say-as:characters]ABC[/say-as]</code> — <span data-i18n="marker.sayas.chars">逐字母读</span></li>
+                </ul>
+            </div>
+
+            <div class="marker-help-section">
+                <h3 class="marker-help-section__title" data-i18n="marker.section.sub">🔁 别名替换 sub</h3>
+                <ul class="pause-modal__examples">
+                    <li><code>[sub:北京]bj[/sub]</code> — <span data-i18n="marker.sub.example">把 "bj" 读作 "北京"</span></li>
+                </ul>
+            </div>
+
+            <div class="pause-modal__example-box">
+                <div class="pause-modal__example-label" data-i18n="marker.exampleLabel">综合示例：</div>
+                <code class="pause-modal__example-code">大家好[pause:500ms][emphasis:strong]欢迎使用[/emphasis][pause:300ms][rate:slow]今天我要慢慢介绍[/rate]电话[say-as:telephone]13800138000[/say-as]</code>
+            </div>
+
+            <p class="pause-modal__limits" data-i18n="marker.limits">值不合法或未闭合时，该标记会原样保留为文本（不会报错）。单次停顿最长 5 秒，整段总停顿 ≤ 30 秒，全部指令上限 50 个。需要更复杂的标签（phoneme / lang / audio / 自定义词典）请用 SSML 模式。</p>
+
+            <div class="pause-modal__footer">
+                <label class="pause-modal__dontshow">
+                    <input type="checkbox" id="pauseModalDontShow">
+                    <span data-i18n="pause.dontShowAgain">不再自动显示</span>
+                </label>
+                <button type="button" class="pause-modal__ok" id="pauseModalOk" data-i18n="pause.gotIt">知道了</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

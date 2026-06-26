@@ -12,7 +12,7 @@ const HTML_PAGE = `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page.title">VoiceCraft - AI-Powered Voice Processing Platform</title>
+    <title data-i18n="page.title">EdgeTTS - AI-Powered Voice Processing Platform</title>
     <meta name="description" content="" data-i18n-content="page.description">
     <meta name="keywords" content="" data-i18n-content="page.keywords">
     <style>
@@ -941,7 +941,7 @@ const HTML_PAGE = `
 
     <div class="container">
         <div class="header">
-            <h1 data-i18n="header.title">VoiceCraft</h1>
+            <h1 data-i18n="header.title">EdgeTTS</h1>
             <p class="subtitle" data-i18n="header.subtitle">AI-Powered Voice Processing Platform</p>
             <div class="features">
                 <div class="feature-item">
@@ -1259,8 +1259,8 @@ const HTML_PAGE = `
         // 国际化翻译数据
         const translations = {
             en: {
-                'page.title': 'VoiceCraft - AI-Powered Voice Processing Platform',
-                'page.description': 'VoiceCraft is an AI-powered platform that converts text to speech and speech to text with 20+ voice options, lightning fast processing, completely free to use.',
+                'page.title': 'EdgeTTS - AI-Powered Voice Processing Platform',
+                'page.description': 'EdgeTTS is an AI-powered platform that converts text to speech and speech to text with 20+ voice options, lightning fast processing, completely free to use.',
                 'page.keywords': 'text to speech,AI voice synthesis,online TTS,voice generator,free voice tools,speech to text,voice transcription',
                 'lang.current': 'English',
                 'lang.en': 'English',
@@ -1271,7 +1271,7 @@ const HTML_PAGE = `
                 'lang.fr': 'Français',
                 'lang.de': 'Deutsch',
                 'lang.ru': 'Русский',
-                'header.title': 'VoiceCraft',
+                'header.title': 'EdgeTTS',
                 'header.subtitle': 'AI-Powered Voice Processing Platform',
                 'header.feature1': '20+ Voice Options',
                 'header.feature2': 'Lightning Fast',
@@ -1303,8 +1303,8 @@ const HTML_PAGE = `
                 'mode.transcription': '语音转文字'
             },
             ja: {
-                'page.title': 'VoiceCraft - AI音声処理プラットフォーム',
-                'page.description': 'VoiceCraftはAI駆動のプラットフォームで、テキスト読み上げと音声テキスト変換に対応。20以上の音声オプション、高速処理、完全無料でご利用いただけます。',
+                'page.title': 'EdgeTTS - AI音声処理プラットフォーム',
+                'page.description': 'EdgeTTSはAI駆動のプラットフォームで、テキスト読み上げと音声テキスト変換に対応。20以上の音声オプション、高速処理、完全無料でご利用いただけます。',
                 'page.keywords': 'テキスト読み上げ,AI音声合成,オンラインTTS,音声ジェネレーター,無料音声ツール,音声テキスト変換,音声転写',
                 'lang.current': '日本語',
                 'lang.en': 'English',
@@ -1315,7 +1315,7 @@ const HTML_PAGE = `
                 'lang.fr': 'Français',
                 'lang.de': 'Deutsch',
                 'lang.ru': 'Русский',
-                'header.title': 'VoiceCraft',
+                'header.title': 'EdgeTTS',
                 'header.subtitle': 'AI音声処理プラットフォーム',
                 'header.feature1': '20以上の音声オプション',
                 'header.feature2': '高速処理',
@@ -1325,8 +1325,8 @@ const HTML_PAGE = `
                 'mode.transcription': '音声テキスト変換'
             },
             ko: {
-                'page.title': 'VoiceCraft - AI 음성 처리 플랫폼',
-                'page.description': 'VoiceCraft는 AI 기반 플랫폼으로 텍스트 음성 변환과 음성 텍스트 변환을 지원합니다. 20개 이상의 음성 옵션, 빠른 처리 속도, 완전 무료로 이용하실 수 있습니다.',
+                'page.title': 'EdgeTTS - AI 음성 처리 플랫폼',
+                'page.description': 'EdgeTTS는 AI 기반 플랫폼으로 텍스트 음성 변환과 음성 텍스트 변환을 지원합니다. 20개 이상의 음성 옵션, 빠른 처리 속도, 완전 무료로 이용하실 수 있습니다.',
                 'page.keywords': '텍스트 음성 변환,AI 음성 합성,온라인 TTS,음성 생성기,무료 음성 도구,음성 텍스트 변환,음성 전사',
                 'lang.current': '한국어',
                 'lang.en': 'English',
@@ -1337,7 +1337,7 @@ const HTML_PAGE = `
                 'lang.fr': 'Français',
                 'lang.de': 'Deutsch',
                 'lang.ru': 'Русский',
-                'header.title': 'VoiceCraft',
+                'header.title': 'EdgeTTS',
                 'header.subtitle': 'AI 음성 처리 플랫폼',
                 'header.feature1': '20개 이상의 음성 옵션',
                 'header.feature2': '빠른 처리',
@@ -1348,7 +1348,7 @@ const HTML_PAGE = `
             },
             es: {
                 'page.title': 'Edge TTS - Plataforma de Procesamiento de Voz con IA',
-                'page.description': 'VoiceCraft es una plataforma impulsada por IA que convierte texto a voz y voz a texto con más de 20 opciones de voz, procesamiento ultrarrápido, completamente gratis.',
+                'page.description': 'EdgeTTS es una plataforma impulsada por IA que convierte texto a voz y voz a texto con más de 20 opciones de voz, procesamiento ultrarrápido, completamente gratis.',
                 'page.keywords': 'texto a voz,síntesis de voz IA,TTS en línea,generador de voz,herramientas de voz gratis,voz a texto,transcripción de voz',
                 'lang.current': 'Español',
                 'lang.en': 'English',
@@ -1359,7 +1359,7 @@ const HTML_PAGE = `
                 'lang.fr': 'Français',
                 'lang.de': 'Deutsch',
                 'lang.ru': 'Русский',
-                'header.title': 'VoiceCraft',
+                'header.title': 'EdgeTTS',
                 'header.subtitle': 'Plataforma de Procesamiento de Voz con IA',
                 'header.feature1': 'Más de 20 Opciones de Voz',
                 'header.feature2': 'Ultrarrápido',
@@ -1369,8 +1369,8 @@ const HTML_PAGE = `
                 'mode.transcription': 'Voz a Texto'
             },
             fr: {
-                'page.title': 'VoiceCraft - Plateforme de Traitement Vocal IA',
-                'page.description': 'VoiceCraft est une plateforme alimentée par IA qui convertit le texte en parole et la parole en texte avec plus de 20 options vocales, traitement ultra-rapide, entièrement gratuit.',
+                'page.title': 'EdgeTTS - Plateforme de Traitement Vocal IA',
+                'page.description': 'EdgeTTS est une plateforme alimentée par IA qui convertit le texte en parole et la parole en texte avec plus de 20 options vocales, traitement ultra-rapide, entièrement gratuit.',
                 'page.keywords': 'texte vers parole,synthèse vocale IA,TTS en ligne,générateur vocal,outils vocaux gratuits,parole vers texte,transcription vocale',
                 'lang.current': 'Français',
                 'lang.en': 'English',
@@ -1381,7 +1381,7 @@ const HTML_PAGE = `
                 'lang.fr': 'Français',
                 'lang.de': 'Deutsch',
                 'lang.ru': 'Русский',
-                'header.title': 'VoiceCraft',
+                'header.title': 'EdgeTTS',
                 'header.subtitle': 'Plateforme de Traitement Vocal IA',
                 'header.feature1': 'Plus de 20 Options Vocales',
                 'header.feature2': 'Ultra-rapide',
@@ -1391,8 +1391,8 @@ const HTML_PAGE = `
                 'mode.transcription': 'Parole vers Texte'
             },
             de: {
-                'page.title': 'VoiceCraft - KI-gestützte Sprachverarbeitungsplattform',
-                'page.description': 'VoiceCraft ist eine KI-gestützte Plattform, die Text in Sprache und Sprache in Text umwandelt, mit über 20 Sprachoptionen, blitzschneller Verarbeitung, völlig kostenlos.',
+                'page.title': 'EdgeTTS - KI-gestützte Sprachverarbeitungsplattform',
+                'page.description': 'EdgeTTS ist eine KI-gestützte Plattform, die Text in Sprache und Sprache in Text umwandelt, mit über 20 Sprachoptionen, blitzschneller Verarbeitung, völlig kostenlos.',
                 'page.keywords': 'Text zu Sprache,KI-Sprachsynthese,Online-TTS,Sprachgenerator,kostenlose Sprachtools,Sprache zu Text,Sprachtranskription',
                 'lang.current': 'Deutsch',
                 'lang.en': 'English',
@@ -1403,7 +1403,7 @@ const HTML_PAGE = `
                 'lang.fr': 'Français',
                 'lang.de': 'Deutsch',
                 'lang.ru': 'Русский',
-                'header.title': 'VoiceCraft',
+                'header.title': 'EdgeTTS',
                 'header.subtitle': 'KI-gestützte Sprachverarbeitungsplattform',
                 'header.feature1': 'Über 20 Sprachoptionen',
                 'header.feature2': 'Blitzschnell',
@@ -1414,7 +1414,7 @@ const HTML_PAGE = `
             },
             ru: {
                 'page.title': 'Ms TTS - ИИ-платформа обработки голоса',
-                'page.description': 'VoiceCraft - это платформа на базе ИИ, которая преобразует текст в речь и речь в текст с более чем 20 голосовыми опциями, молниеносной обработкой, совершенно бесплатно.',
+                'page.description': 'EdgeTTS - это платформа на базе ИИ, которая преобразует текст в речь и речь в текст с более чем 20 голосовыми опциями, молниеносной обработкой, совершенно бесплатно.',
                 'page.keywords': 'текст в речь,ИИ синтез речи,онлайн TTS,генератор голоса,бесплатные голосовые инструменты,речь в текст,транскрипция речи',
                 'lang.current': 'Русский',
                 'lang.en': 'English',
@@ -1453,7 +1453,7 @@ const HTML_PAGE = `
 
         function setLanguage(lang) {
             currentLanguage = lang;
-            localStorage.setItem('voicecraft-language', lang);
+            localStorage.setItem('EdgeTTS-language', lang);
             
             // 更新页面语言属性
             document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
@@ -2049,7 +2049,7 @@ const HTML_PAGE = `
         // 初始化国际化
         function initializeI18n() {
             // 检查本地存储中的语言设置
-            const savedLang = localStorage.getItem('voicecraft-language');
+            const savedLang = localStorage.getItem('EdgeTTS-language');
             
             if (savedLang && translations[savedLang]) {
                 currentLanguage = savedLang;
