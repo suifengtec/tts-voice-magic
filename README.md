@@ -4,18 +4,17 @@
 >
 > 直接使用: https://tts.wangwangit.com
 
-<img width="2512" height="1284" alt="image" src="https://github.com/user-attachments/assets/570961ef-b189-480f-833e-7877ce38f19d" />
-
-
 ## ✨ 特性
 
 ### 🎯 核心功能
+
 - 🗣️ **文字转语音(TTS)** - 基于Microsoft Edge TTS，支持20+种中文语音
 - 🎧 **语音转文字(STT)** - 集成硅基流动API，高精度语音识别
 - 🔄 **双向处理** - 智能模式切换，语音与文字无缝转换
 - 🌍 **多语言支持** - 支持中文、英文、日文、韩文、西班牙文、法文、德文、俄文
 
 ### 🎨 用户体验
+
 - ⚡ **秒速生成** - 快速生成高质量语音文件和转录文本
 - 🆓 **完全免费** - 无需注册，无使用限制
 - 📱 **响应式设计** - 完美适配桌面端和移动端
@@ -24,6 +23,7 @@
 - 📋 **便捷操作** - 转录结果可复制、编辑，支持转为语音功能
 
 ### 🔧 技术特性
+
 - 🔗 **API 兼容** - 兼容 OpenAI TTS API 格式
 - 🎵 **多音频格式** - 支持mp3、wav、m4a、flac、aac等9种音频格式
 - 🔐 **灵活配置** - 支持默认Token和自定义Token配置
@@ -33,15 +33,14 @@
 
 ### 点击按钮，一键部署到 CloudFlare Workers,
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/wangwangit/tts)
-
-
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/suifengtec/tts-voice-magic)
 
 ## 🎯 使用方法
 
 ### 🌐 网页界面使用
 
 #### 文字转语音模式
+
 1. 访问部署后的 Worker 域名
 2. 确保当前为"文字转语音"模式（默认模式）
 3. 选择输入方式：手动输入或上传txt文件
@@ -51,6 +50,7 @@
 7. 播放生成的音频或下载 MP3 文件
 
 #### 语音转文字模式
+
 1. 点击页面顶部的"语音转文字"按钮切换模式
 2. 上传音频文件（支持mp3、wav、m4a等9种格式，最大10MB）
 3. 选择Token配置：使用默认Token或输入自定义硅基流动Token
@@ -58,6 +58,7 @@
 5. 查看转录结果，支持复制、编辑或直接转为语音
 
 #### 🌍 多语言切换
+
 - 点击右上角的语言切换器
 - 支持中文、English、日本語、한국어、Español、Français、Deutsch、Русский
 - 自动记住用户的语言偏好
